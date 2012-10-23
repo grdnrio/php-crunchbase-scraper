@@ -7,7 +7,7 @@ $config = array(
            'wrap'           => false);
 
 //set category for retrieving company list
-$category="network";
+$category="hosting";
 
 //build page to scrape; concatenate url & variable
 $pageContent = file_get_contents('http://www.crunchbase.com/tag/' . $category);
@@ -15,6 +15,10 @@ $pageContent = file_get_contents('http://www.crunchbase.com/tag/' . $category);
 $content = new tidy;
 $content->parseString($pageContent, $config, 'utf8');
 $content->cleanRepair();
+
+//select number of results from a tag
+preg_match('/<h2>Companies ([^<]+)/s', $pageContent, $resultsNum);
+$results = $resultsNum[1];
 
 //select company names from first (company) table on category page
 preg_match('/<div class="outterbox float_photo">\s*<table>(.*)<\/table>/sU', $pageContent, $companies);
@@ -25,7 +29,8 @@ preg_match_all('/href="\/company\/(.*?)"/s', $companiesOut, $companiesClean);
 $clean = $companiesClean[1];
 
 //page title
-var_dump($category);
+echo("<h1>Display results for the category \"$category\"</h1>");
+echo("<h2>$results results were found</h2>");
 echo "\n\n\n";
 
 //loop through each item building company variable details (full URL, company name and Twitter handle)
@@ -48,11 +53,13 @@ foreach($clean as $value) {
 	}
 	
 	//display company details
-	var_dump($compNameOut);
-	var_dump($twitterOut);
-	echo $fullUrl;
-	//line break between each company
-	echo "\n\n";
+	echo(
+	   "<ul>
+	   		<li><strong>$compNameOut</strong></li>
+			<li>$twitterOut</li>
+			<li><a href=\"http://www.crunchbase.com/company/$value\" target=\"_blank\">$fullUrl</a></li>
+		</ul>
+		<br />"		);
 	
 	//limit selection
 	$i++;
@@ -60,3 +67,4 @@ foreach($clean as $value) {
 		exit;
 	}
 }
+?>
