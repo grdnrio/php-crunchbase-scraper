@@ -6,7 +6,7 @@ A spider written in PHP to scrape Crunchbase for company name, twitter handle an
 
 ## Usage ##
 
-Set the $category variable to tage from the Crunchbase website.
+Set the $category variable to a tag from the Crunchbase website.
 
 Here's an example: http://www.crunchbase.com/tag/cloud-computing
 
