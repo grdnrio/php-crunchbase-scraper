@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
-$db_name = "";
-$username = "";
+$db_name = "spider";
+$username = "spidersql";
 $password = "";
 
 $con = mysql_connect("$host","$username","$password");
