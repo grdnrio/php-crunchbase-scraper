@@ -1,5 +1,7 @@
 <?php
 
+include'dbConnect.php';
+
 // Specify tidy configuration
 $config = array(
            'indent'         => false,
@@ -7,7 +9,7 @@ $config = array(
            'wrap'           => false);
 
 //set category for retrieving company list
-$category="hosting";
+$category="cloud-computing";
 
 //build page to scrape; concatenate url & variable
 $pageContent = file_get_contents('http://www.crunchbase.com/tag/' . $category);
@@ -32,6 +34,7 @@ $clean = $companiesClean[1];
 echo("<h1>Display results for the category \"$category\"</h1>");
 echo("<h2>$results results were found</h2>");
 echo "\n\n\n";
+
 
 //loop through each item building company variable details (full URL, company name and Twitter handle)
 foreach($clean as $value) {
@@ -67,4 +70,6 @@ foreach($clean as $value) {
 		exit;
 	}
 }
+
+
 ?>
