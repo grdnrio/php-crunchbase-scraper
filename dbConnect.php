@@ -1,8 +1,9 @@
 <?php
+
 $host = "localhost";
 $db_name = "spider";
 $username = "spidersql";
-$password = "";
+$password = "eLYjeA2jDn5BCsdX";
 
 $con = mysql_connect("$host","$username","$password");
 if (!$con)
