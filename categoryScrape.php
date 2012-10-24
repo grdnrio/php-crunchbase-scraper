@@ -1,6 +1,7 @@
 <?php
 
-include'dbConnect.php';
+include(__DIR__."dbConnect.php");
+include(__DIR__."createTable.php");
 
 // Specify tidy configuration
 $config = array(
@@ -32,6 +33,8 @@ $clean = $companiesClean[1];
 
 //select spider database at local host
 mysql_select_db("spider") or die(mysql_error());
+
+createTable($category);
 
 //page title
 echo("<h1>Display results for the category \"$category\"</h1>");
