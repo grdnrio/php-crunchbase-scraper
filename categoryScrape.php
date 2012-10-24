@@ -30,6 +30,9 @@ $companiesOut = $companies[1];
 preg_match_all('/href="\/company\/(.*?)"/s', $companiesOut, $companiesClean);
 $clean = $companiesClean[1];
 
+//select spider database at local host
+mysql_select_db("spider") or die(mysql_error());
+
 //page title
 echo("<h1>Display results for the category \"$category\"</h1>");
 echo("<h2>$results results were found</h2>");
