@@ -1,7 +1,7 @@
 <?php
 
-include(__DIR__."dbConnect.php");
-include(__DIR__."createTable.php");
+include 'dbConnect.php';
+include 'createTable.php';
 
 // Specify tidy configuration
 $config = array(
