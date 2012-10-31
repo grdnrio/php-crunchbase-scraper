@@ -1,6 +1,7 @@
 <?php
 
-include'dbConnect.php';
+include 'categoryScrape.php';
+include 'dbConnect.php';
 
 //select table from category being crawled
 mysql_select_db($db_name, $con);
